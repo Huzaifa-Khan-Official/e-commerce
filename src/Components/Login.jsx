@@ -10,8 +10,6 @@ export default function Login() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data);
-
         try {
             const loginRes = await login(data);
 

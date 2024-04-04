@@ -1,7 +1,26 @@
 import axios from "axios";
 
-const axiosHandler = axios.create({
-    baseURL: "https://dummyjson.com"
+export const axiosHandler = axios.create({
+    baseURL: "https://dummyjson.com",
+    headers: {
+        "Content-Type": "application/json"
+    }
 })
 
-axiosHandler.interceptors.request.use()
+axiosHandler.interceptors.request.use(
+    (config) => {
+        return config
+    },
+    (err) => {
+        return Promise.reject(err)
+    }
+)
+
+axiosHandler.interceptors.response.use(
+    (response) => {
+        return response
+    },
+    (err) => {
+        return Promise.reject(err)
+    }
+)
