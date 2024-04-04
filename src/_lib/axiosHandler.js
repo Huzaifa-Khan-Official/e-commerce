@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosHandler = axios.create({
-    baseURL: "https://dummyjson.com",
+    baseURL: "https://dummyjson.com/",
     headers: {
         "Content-Type": "application/json"
     }
@@ -18,9 +18,9 @@ axiosHandler.interceptors.request.use(
 
 axiosHandler.interceptors.response.use(
     (response) => {
-        return response
+        return response.data
     },
     (err) => {
-        return Promise.reject(err)
+        return Promise.reject(err.message)
     }
 )

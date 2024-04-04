@@ -24,14 +24,14 @@ export default function Login() {
                 <input
                     type="text"
                     placeholder='Enter your email'
-                    {...register("email", {
+                    {...register("username", {
                         required: {
                             value: true,
-                            message: "Email is required"
+                            message: "Username is required"
                         }
                     })}
                 /> <br />
-                {(errors && errors.email) && <span>{errors.email.message}</span>}
+                {(errors && errors.username) && <span>{errors.username.message}</span>}
                 <input
                     type="password"
                     placeholder='Enter your password'
