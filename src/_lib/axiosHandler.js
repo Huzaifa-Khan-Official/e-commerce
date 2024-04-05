@@ -21,6 +21,10 @@ axiosHandler.interceptors.response.use(
         return response.data
     },
     (err) => {
-        return Promise.reject(err.message)
+        if (err.response.status === 400) {
+            const err = "Bad Request";
+            return err
+        }
+        return Promise.reject(err)
     }
 )

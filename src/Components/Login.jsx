@@ -1,8 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { login } from '../_lib/services/auth.service';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -13,7 +15,9 @@ export default function Login() {
         try {
             const loginRes = await login(data);
 
-            console.log("loginRes ==> ", loginRes);
+            sessionStorage.setItem("token", loginRes.token);
+
+            navigate("/products")
         } catch (error) {
             console.log("error ==> ", error);
         }
