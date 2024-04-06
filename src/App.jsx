@@ -1,6 +1,7 @@
 import './App.css';
 import AllProducts from './Components/AllProducts';
 import Login from './Components/Login';
+import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
 import {
   createBrowserRouter,
@@ -30,7 +31,8 @@ function App() {
   ]);
 
   return (
-    <div className="App">
+    <div className="App px-4">
+      <Navbar />
       <RouterProvider router={router} />
     </div>
   );

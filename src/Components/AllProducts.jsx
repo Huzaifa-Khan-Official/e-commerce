@@ -10,13 +10,13 @@ export default function AllProducts() {
     }, [])
 
     return (
-        <div className='row justify-content-center mt-4 px-4 gap-4'>
+        <div className='row justify-content-center mt-4 gap-4'>
             {
                 data.map((singleProduct, index) => {
                     return (
-                        <div key={index} className='cardBody col-md-5 col-12 rounded shadow mt-4'>
+                        <div key={index} className='cardBody col-md-3 col-sm-5 col-12 rounded shadow mt-4 px-0'>
                             <img src={singleProduct.thumbnail} className="productImage rounded" alt="" />
-                            <div className="cardHeading">
+                            <div className="cardHeading px-3 py-4">
                                 <div>
                                     <h3 className='productTitle'>{singleProduct.title}</h3>
                                     <p className='productDesc'>{singleProduct.description}</p>

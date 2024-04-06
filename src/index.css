@@ -6,4 +6,6 @@
 
 .productImage {
   width: 100%;
+  object-fit: fill;
+  height: 200px;
 }
