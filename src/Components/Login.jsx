@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { login } from '../_lib/services/auth.service';
 import { useNavigate } from 'react-router-dom';
@@ -11,15 +11,23 @@ export default function Login() {
         formState: { errors }
     } = useForm();
 
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+
+        if (token) {
+            navigate("products")
+        }
+    }, [])
+
     const onSubmit = async (data) => {
         try {
             const loginRes = await login(data);
+            sessionStorage.setItem("token", loginRes.data.token);
 
-            sessionStorage.setItem("token", loginRes.token);
-
-            navigate("/products")
+            navigate("products")
         } catch (error) {
-            console.log("error ==> ", error);
+            alert("Invalid Credentials")
         }
     }
     return (

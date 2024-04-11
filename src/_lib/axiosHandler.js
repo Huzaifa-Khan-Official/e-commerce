@@ -18,7 +18,7 @@ axiosHandler.interceptors.request.use(
 
 axiosHandler.interceptors.response.use(
     (response) => {
-        return response.data
+        return response
     },
     (err) => {
         if (err.response.status === 400) {

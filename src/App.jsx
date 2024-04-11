@@ -12,8 +12,12 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: !token ? "/" : "products",
       element: !token ? < Login /> : <AllProducts />,
+    },
+    {
+      path: "/",
+      element: <Login />
     },
     {
       path: "products",

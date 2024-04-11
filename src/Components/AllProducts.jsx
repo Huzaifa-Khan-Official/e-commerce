@@ -2,12 +2,22 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar';
 import { axiosHandler } from '../_lib/axiosHandler';
+import { useNavigate } from 'react-router-dom';
 
 export default function AllProducts() {
     const [data, setData] = useState([]);
+    const navigate = useNavigate();
+
     useEffect(() => {
+        const token = sessionStorage.getItem('token');
+
+        if (!token) {
+            navigate("/")
+        }
+
+
         axiosHandler.get("products")
-            .then(res => setData(res.products))
+            .then(res => setData(res.data.products))
             .catch(err => console.log(err))
     }, [])
 

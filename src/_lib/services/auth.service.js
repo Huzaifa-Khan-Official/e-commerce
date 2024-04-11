@@ -5,7 +5,11 @@ export const login = async (paylod) => {
         let data = JSON.stringify(paylod);
 
         const response = await axiosHandler.post("/auth/login", data);
-        return response
+        if (response !== "Bad Request") {
+            return response
+        } else {
+            throw "Bad Request"
+        }
     } catch (error) {
         return Promise.reject(error);
     }

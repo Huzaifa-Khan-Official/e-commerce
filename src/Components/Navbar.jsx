@@ -10,19 +10,27 @@ export default function Navbar() {
             .catch(err => console.log(err))
     }, [])
 
+    const selectCategory = (event) => {
+        const value = event.target.value;
+        axios.get(`https://dummyjson.com/products/category/${value}`)
+            .then(res => console.log(res.data.products))
+            .catch(err => console.log(err))
+    }
+
     return (
         <div>
-            <ul>
+            <select className="form-select mt-4" aria-label="Default select example" defaultValue={"selected"} onChange={selectCategory}>
+                <option value="selected" disabled>Select Category</option>
                 {
                     categories.map((value, index) => {
                         return (
-                            <li key={index}>
+                            <option value={value} key={index}>
                                 {value}
-                            </li>
+                            </option>
                         )
                     })
                 }
-            </ul>
+            </select>
         </div>
     )
 }
