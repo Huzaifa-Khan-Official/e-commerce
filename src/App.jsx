@@ -6,9 +6,12 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import { Data } from './Context/Context';
+import { useState } from 'react';
 
 function App() {
   const token = sessionStorage.getItem('token');
+  const [data, setData] = useState([]);
 
   const router = createBrowserRouter([
     {
@@ -31,7 +34,9 @@ function App() {
 
   return (
     <div className="App px-4">
-      <RouterProvider router={router} />
+      <Data.Provider value={{data, setData}}>
+        <RouterProvider router={router} />
+      </Data.Provider>
     </div>
   );
 }

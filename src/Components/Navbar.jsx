@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Data } from '../Context/Context';
 
 export default function Navbar() {
     const [categories, setCategoris] = useState([]);
+    const {data, setData} = useContext(Data);
+    
 
     useEffect(() => {
         axios.get("https://dummyjson.com/products/categories")
@@ -13,7 +16,7 @@ export default function Navbar() {
     const selectCategory = (event) => {
         const value = event.target.value;
         axios.get(`https://dummyjson.com/products/category/${value}`)
-            .then(res => console.log(res.data.products))
+            .then(res => setData(res.data.products))
             .catch(err => console.log(err))
     }
 

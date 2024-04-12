@@ -1,11 +1,12 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from './Navbar';
 import { axiosHandler } from '../_lib/axiosHandler';
 import { useNavigate } from 'react-router-dom';
+import { Data } from '../Context/Context';
 
 export default function AllProducts() {
-    const [data, setData] = useState([]);
+    const { data, setData } = useContext(Data);
     const navigate = useNavigate();
 
     useEffect(() => {
