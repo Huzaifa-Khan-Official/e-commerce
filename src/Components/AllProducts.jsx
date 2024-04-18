@@ -1,8 +1,7 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navbar from './Navbar';
 import { axiosHandler } from '../_lib/axiosHandler';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Data } from '../Context/Context';
 
 export default function AllProducts() {
@@ -20,7 +19,7 @@ export default function AllProducts() {
         axiosHandler.get("products")
             .then(res => setData(res.data.products))
             .catch(err => console.log(err))
-    }, [])
+    })
 
     return (
         <>
@@ -44,6 +43,9 @@ export default function AllProducts() {
                                             <p className="productPrice">
                                                 {singleProduct.price}
                                             </p>
+                                            <Link to={`${singleProduct.id}`}>
+                                                See Details
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

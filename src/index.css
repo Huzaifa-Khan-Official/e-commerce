@@ -4,8 +4,56 @@
   box-sizing: border-box;
 }
 
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 .productImage {
   width: 100%;
   object-fit: fill;
   height: 200px;
 }
+
+/* .productDetailImgDiv img {
+  width: 100% !important;
+  max-height: 300px !important;
+  object-fit: contain;
+} */
+
+.productTitle {
+  font-size: 22px;
+  font-weight: 400px;
+}
+
+.productDesc {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.productRating svg {
+  width: 20px;
+}
+
+.productRating:hover svg {
+  cursor: pointer;
+}
+
+.productBrand {
+  font-size: 14px;
+}
+
+.productBrand span {
+  opacity: 0.8;
+}
+
+.js-image-zoom__zoomed-image {
+  z-index: 1;
+}
+
+/* @media (max-width: 240) {
+  .productDetailImgDiv img {
+    width: 200px !important;
+  }
+} */
