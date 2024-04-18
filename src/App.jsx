@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Data } from './Context/Context';
 import { useState } from 'react';
+import ProductDetail from './Components/ProductDetail';
 
 function App() {
   const token = sessionStorage.getItem('token');
@@ -25,6 +26,10 @@ function App() {
     {
       path: "products",
       element: <AllProducts />
+    },
+    {
+      path: "products/:productId",
+      element: <ProductDetail />
     },
     {
       path: "signup",
